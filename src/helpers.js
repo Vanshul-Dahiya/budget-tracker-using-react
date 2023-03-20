@@ -50,3 +50,39 @@ export const createExpense = ({ name, amount, budgetId }) => {
 export const deleteItem = ({ key }) => {
   return localStorage.removeItem(key);
 };
+
+// Total spent by budget
+export const calculateSpentByBudget = (budgetId) => {
+  const expenses = fetchData("expenses") ?? [];
+
+  // check 2 things => 1. match budgetID
+  // 2. Add all values to see total amount spent
+
+  const budgetSpent = expenses.reduce((acc, expense) => {
+    // check if expense.id === budgetId which is passed in
+    if (expense.budgetId !== budgetId) return acc;
+    // this if condition will return 0
+
+    // add current amount to total
+    return (acc += expense.amount);
+  }, 0);
+  return budgetSpent;
+};
+
+// Formatting
+
+// formatting percentages
+export const formatPercentage = (amt) => {
+  return amt.toLocaleString(undefined, {
+    style: "percent",
+    minimumFractionDigits: 0,
+  });
+};
+
+// format currency
+export const formatCurrency = (amt) => {
+  return amt.toLocaleString(undefined, {
+    style: "currency",
+    currency: "INR",
+  });
+};
