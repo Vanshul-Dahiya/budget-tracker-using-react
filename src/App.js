@@ -11,11 +11,12 @@ import ExpensesPage, {
   expensesAction,
   expensesLoader,
 } from "./pages/ExpensesPage";
+import Error from "./pages/Error";
+import BudgetPage, { budgetAction, budgetLoader } from "./pages/BudgetPage";
 
 // actions
 import { logoutAction } from "./actions/logout";
 
-import Error from "./pages/Error";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,10 +34,19 @@ const router = createBrowserRouter([
       },
       {
         // path: "/",
+        path: "budget/:id",
+        element: <BudgetPage />,
+        loader: budgetLoader,
+        action: budgetAction,
+        errorElement: <Error />,
+      },
+      {
+        // path: "/",
         path: "expenses",
         element: <ExpensesPage />,
         loader: expensesLoader,
         action: expensesAction,
+        errorElement: <Error />,
       },
       {
         path: "logout",
