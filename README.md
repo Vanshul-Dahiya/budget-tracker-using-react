@@ -39,11 +39,6 @@ We welcome contributions to enhance the Budget Tracker App. Follow these steps:
 4. Push to the branch: `git push origin feature/new-feature`
 5. Submit a pull request
 
-## Tech Stack
-
-- React
-- Chart.js
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE.md).
